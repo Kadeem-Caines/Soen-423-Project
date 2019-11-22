@@ -2,6 +2,8 @@ package Client;
 
 import org.omg.CosNaming.*;
 import org.omg.CORBA.*;
+import org.omg.CORBA.ORBPackage.InvalidName;
+
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -11,16 +13,31 @@ import java.util.Random;
 import java.io.IOException;
 import java.util.Scanner;
 
+
 public class Client {
 	
 	
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidName {
 	
 		
 		// initialize client ORB
-		ORB orb = ORB.init(args, null);
+		Properties props = new Properties();
+	    props.put("org.omg.CORBA.ORBInitialPort", "900");
+	    props.put("org.omg.CORBA.ORBInitialHost", "localhost");
+	 
+ 
+        // create and initialize the ORB
+	     ORB orb = ORB.init(args, null);
+
+        // get the root naming context
+        org.omg.CORBA.Object objRef = 
+	     orb.resolve_initial_references("NameService");
+        // Use NamingContextExt instead of NamingContext, 
+        // part of the Interoperable naming Service.  
+        NamingContextExt ncRef =  NamingContextExtHelper.narrow(objRef);
+       
 		
 		//Variables used for creating patient or admin ID
 		Random rand = new Random();
@@ -120,6 +137,8 @@ public class Client {
 						
 					 start=true;
 					 
+					 while(start) { //third while loop. keep asking what option function user wants to perform
+					 
 					 	System.out.println("Set up complete ");
 					 	System.out.println("Please choose one of the following options");
 
@@ -128,9 +147,47 @@ public class Client {
 						System.out.println("2.Cancel an appointment!");
 						System.out.println("3.View appointments schedule");
 						
+						input = scanner.nextInt();
 						
 						
+						 switch(input)
+						 {			
+						 
+						  case 0:
+								 System.out.println("Thank you for using the Distributed Health Care Management System (DHMS) ");
+								 System.exit(0);
+							  
+						  case 1:
+						   
+							
+						    start=false;
+						    break;
+						    
+						  case 2:
+							  
+							 
+							start=false;
+						    break;
+						    
+						    
+						  case 3:
+							  break;
+							  
+							  
+						  case 4:
+							  break;
+							  
+					
+						  default:
+							  System.out.println("Invalid Choice. Try Again");
+							 
+						}
 						
+						
+
+					 }	
+			
+						start=true;
 						
 					
 			} // end of first while loop 

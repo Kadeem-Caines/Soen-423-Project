@@ -29,7 +29,9 @@ soon as two identical (correct) results are received from the replicas.
 
 public class FrontEnd {
 	
-	
+	private  HashMap<String,InetSocketAddress> replicaManagerDatabase = new HashMap<String, InetSocketAddress>();
+	private InetSocketAddress sequencerAddress;
+
 	public void initialzeORB () throws InvalidName {
 		
 	 try{
@@ -59,6 +61,15 @@ public class FrontEnd {
 		 
 	 }
 	 
+	}
+	
+	
+	public void requestSequencer() {
+		
+	}
+	
+	public void replySequencer() {
+		
 	}
 
 }
