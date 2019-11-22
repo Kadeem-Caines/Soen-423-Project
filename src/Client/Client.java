@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class Client {
 	
 	
-	
+
 	
 	public static void main(String[] args) throws InvalidName {
 	
@@ -195,6 +195,7 @@ public class Client {
 	}
 	
 		
+
 			
 
 }

@@ -14,6 +14,7 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import org.omg.CORBA.ORB;
 import org.omg.CORBA.ORBPackage.InvalidName;
@@ -31,6 +32,7 @@ public class FrontEnd {
 	
 	private  HashMap<String,InetSocketAddress> replicaManagerDatabase = new HashMap<String, InetSocketAddress>();
 	private InetSocketAddress sequencerAddress;
+
 
 	public void initialzeORB () throws InvalidName {
 		
@@ -71,5 +73,15 @@ public class FrontEnd {
 	public void replySequencer() {
 		
 	}
+	
+	public void RequestClient() {
+		
+	}
+	
+	public void replyClient() {
+		
+	}
+	
+	
 
 }
