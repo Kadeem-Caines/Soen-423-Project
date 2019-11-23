@@ -14,7 +14,7 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
-import java.util.logging.Logger;
+
 
 import org.omg.CORBA.ORB;
 import org.omg.CORBA.ORBPackage.InvalidName;
@@ -33,96 +33,184 @@ soon as two identical (correct) results are received from the replicas.
 public class FrontEnd extends frontEndOperationsPOA {
 	
 	private  HashMap<String,InetSocketAddress> replicaManagerDatabase = new HashMap<String, InetSocketAddress>();
-	private String sequencerAddress;
+	private InetSocketAddress sequencerAddress;
+	public static int UDPPortSequencer = 1000;
+	public static int UDPPortReplicaListener = 1001;
 
 
-	public void initialzeORB () throws InvalidName {
+
+	
+	public FrontEnd() {
 		
-	 try{
+	}
+	
+	
+	public void requestReplySequencer() {
+		
+	}
+	
+	public void sendRequestSequencer() {
+		
+
+		
+	}
+
+
+
+	@Override
+	public void bookAppointment(String patientID, String appointmentID, String appointmentType) throws IOException  {
+		
+		DatagramSocket socket = null ;
+		String  sequencerData=patientID+appointmentID+appointmentType;
+		
+		try {
+			socket = new DatagramSocket() ;
+			
+			// Prepare containers for the outgoing request and incoming reply.
+			byte[] requestByte = sequencerData.getBytes();
+			
+			// Prepare a socket and a packet for the request.
+			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
+			
+			// Send out the packet
+			socket.send(reqPacket);
+			
+		} catch (SocketException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+	}
+
+
+	@Override
+	public void getAppointmentSchedule(String patientID) throws IOException {
+		
+		DatagramSocket socket = null ;
+		String sequencerData=patientID;
+		
+		try {
+			socket = new DatagramSocket() ;
+			
+			// Prepare containers for the outgoing request and incoming reply.
+			byte[] requestByte = sequencerData.getBytes();
+			
+			// Prepare a socket and a packet for the request.
+			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
+			
+			// Send out the packet
+			socket.send(reqPacket);
+			
+		} catch (SocketException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+	}
+
+
+	@Override
+	public void cancelAppointment(String patientID, String appointmentID) throws IOException {
+		DatagramSocket socket = null ;
+		
+		String sequencerData=patientID+appointmentID;
+		
+		try {
+			socket = new DatagramSocket() ;
+			
+			// Prepare containers for the outgoing request and incoming reply.
+			byte[] requestByte = sequencerData.getBytes();
+			
+			// Prepare a socket and a packet for the request.
+			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
+			
+			// Send out the packet
+			socket.send(reqPacket);
+			
+		} catch (SocketException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+
+	@Override
+	public void addAppointment(String appointmentID, String appointmentType, int capacity, String adminID) throws IOException {
+		
+		DatagramSocket socket = null ;
+		
+		String sequencerData= appointmentID+appointmentType+capacity+adminID;
+		
+		try {
+			socket = new DatagramSocket() ;
+			
+			// Prepare containers for the outgoing request and incoming reply.
+			byte[] requestByte = sequencerData.getBytes();
+			
+			// Prepare a socket and a packet for the request.
+			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
+			
+			// Send out the packet
+			socket.send(reqPacket);
+			
+		} catch (SocketException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+	}
+
+
+	@Override
+	public void removeAppointment(String appointmentID, String appointmentType, String adminID) throws IOException {
+
+		DatagramSocket socket = null ;
+		String sequencerData=appointmentID+appointmentType+adminID;
+		
+		
+			try {
+				socket = new DatagramSocket() ;
 				
-			 
-			 String[] args = new String[1];
-			 
-				Properties props = new Properties();
-			    props.put("org.omg.CORBA.ORBInitialPort", "900");
-			    props.put("org.omg.CORBA.ORBInitialHost", "localhost");
-			 
-		 
-		        // create and initialize the ORB
-			     ORB orb = ORB.init(args, null);
-
-		        // get the root naming context
-		        org.omg.CORBA.Object objRef = 
-			     orb.resolve_initial_references("NameService");
-		        // Use NamingContextExt instead of NamingContext, 
-		        // part of the Interoperable naming Service.  
-		        NamingContextExt ncRef = 
-		          NamingContextExtHelper.narrow(objRef);
-	}
-	 
-	 finally {
-		 
-		 
-	 }
-	 
-	}
+				// Prepare containers for the outgoing request and incoming reply.
+				byte[] requestByte = sequencerData.getBytes();
+				
+				// Prepare a socket and a packet for the request.
+				DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
+				
+				// Send out the packet
+				socket.send(reqPacket);
+				
+			} catch (SocketException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	
-	
-	public void requestSequencer() {
-		
-	}
-	
-	public void replySequencer() {
-		
-	}
-	
-	public void RequestClient() {
-		
-	}
-	
-	public void replyClient() {
 		
 	}
 
 
 	@Override
-	public void bookAppointment(String patientID, String appointmentID, String appointmentType) {
-		// TODO Auto-generated method stub
+	public void listAppointmentAvailability(String appointmentType) throws IOException {
 		
-	}
-
-
-	@Override
-	public void getAppointmentSchedule(String patientID) {
-		// TODO Auto-generated method stub
+		DatagramSocket socket = null ;
 		
-	}
-
-
-	@Override
-	public void cancelAppointment(String patientID, String appointmentID) {
-		// TODO Auto-generated method stub
+		try {
+			try {
+				socket = new DatagramSocket() ;
+			} catch (SocketException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
-	}
-
-
-	@Override
-	public void addAppointment(String appointmentID, String appointmentType, int capacity, String adminID) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void removeAppointment(String appointmentID, String appointmentType, String adminID) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void listAppointmentAvailability(String appointmentType) {
-		// TODO Auto-generated method stub
+		finally {
+			
+			
+		}
 		
 	}
 
@@ -130,7 +218,24 @@ public class FrontEnd extends frontEndOperationsPOA {
 	@Override
 	public void swapAppointment(String patientID, String oldAppointmentID, String oldAppointmentType,
 			String newAppointmentID, String newAppointmentType) {
-		// TODO Auto-generated method stub
+		
+		String sequencerData = oldAppointmentID+oldAppointmentType+newAppointmentID+newAppointmentType;
+				
+		DatagramSocket socket = null ;
+		
+		try {
+			try {
+				socket = new DatagramSocket() ;
+			} catch (SocketException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		finally {
+			
+			
+		}
 		
 	}
 
@@ -142,5 +247,28 @@ public class FrontEnd extends frontEndOperationsPOA {
 	}
 	
 	
+	public static void main(String[] args) throws InvalidName {
+		
+		Properties props = new Properties();
+	    props.put("org.omg.CORBA.ORBInitialPort", "900");
+	    props.put("org.omg.CORBA.ORBInitialHost", "localhost");
+	 
+ 
+        // create and initialize the ORB
+	     ORB orb = ORB.init(args, null);
+
+        // get the root naming context
+        org.omg.CORBA.Object objRef = 
+	     orb.resolve_initial_references("NameService");
+        // Use NamingContextExt instead of NamingContext, 
+        // part of the Interoperable naming Service.  
+        NamingContextExt ncRef = 
+          NamingContextExtHelper.narrow(objRef);
+	}
+	
 
 }
+	
+	
+
+
