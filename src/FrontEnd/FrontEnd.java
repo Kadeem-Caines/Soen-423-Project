@@ -21,7 +21,7 @@ import org.omg.CORBA.ORBPackage.InvalidName;
 import org.omg.CosNaming.NamingContextExt;
 import org.omg.CosNaming.NamingContextExtHelper;
 
-import corba.frontEndOperationsPOA;
+import corbaFrontEnd.frontEndOperationsPOA;
 
 /*
  * This class will implement a CORBA front end (FE) which receives a client request
@@ -58,184 +58,252 @@ public class FrontEnd extends frontEndOperationsPOA {
 
 
 	@Override
-	public void bookAppointment(String patientID, String appointmentID, String appointmentType) throws IOException  {
+	public String bookAppointment(String patientID, String appointmentID, String appointmentType) throws IOException  {
 		
 		DatagramSocket socket = null ;
 		String  sequencerData=patientID+appointmentID+appointmentType;
+		String response = null;
 		
 		try {
 			socket = new DatagramSocket() ;
 			
 			// Prepare containers for the outgoing request and incoming reply.
 			byte[] requestByte = sequencerData.getBytes();
+			byte[] replyByte = new byte[requestByte.length];
 			
 			// Prepare a socket and a packet for the request.
 			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
+			DatagramPacket replyPacket = new DatagramPacket(replyByte, replyByte.length);
 			
 			// Send out the packet
 			socket.send(reqPacket);
+			
+			response =new String(replyPacket.getData(), "UTF-8"); 
+			
+			
 			
 		} catch (SocketException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		
+		return response;
 	}
 
 
 	@Override
-	public void getAppointmentSchedule(String patientID) throws IOException {
+	public String getAppointmentSchedule(String patientID) throws IOException {
 		
 		DatagramSocket socket = null ;
 		String sequencerData=patientID;
+		String response = null;
 		
 		try {
 			socket = new DatagramSocket() ;
 			
 			// Prepare containers for the outgoing request and incoming reply.
 			byte[] requestByte = sequencerData.getBytes();
+			byte[] replyByte = new byte[requestByte.length];
 			
 			// Prepare a socket and a packet for the request.
 			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
+			DatagramPacket replyPacket = new DatagramPacket(replyByte, replyByte.length);
 			
 			// Send out the packet
 			socket.send(reqPacket);
+			
+			response =new String(replyPacket.getData(), "UTF-8"); 
+			
+			
 			
 		} catch (SocketException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+		return response;
 		
 	}
 
 
 	@Override
-	public void cancelAppointment(String patientID, String appointmentID) throws IOException {
+	public String cancelAppointment(String patientID, String appointmentID) throws IOException {
 		DatagramSocket socket = null ;
 		
 		String sequencerData=patientID+appointmentID;
+		String response = null;
 		
 		try {
 			socket = new DatagramSocket() ;
 			
 			// Prepare containers for the outgoing request and incoming reply.
 			byte[] requestByte = sequencerData.getBytes();
+			byte[] replyByte = new byte[requestByte.length];
 			
 			// Prepare a socket and a packet for the request.
 			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
+			DatagramPacket replyPacket = new DatagramPacket(replyByte, replyByte.length);
 			
 			// Send out the packet
 			socket.send(reqPacket);
+			
+			response =new String(replyPacket.getData(), "UTF-8"); 
+			
+			
 			
 		} catch (SocketException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+		return response;
+
 	}
 
 
 	@Override
-	public void addAppointment(String appointmentID, String appointmentType, int capacity, String adminID) throws IOException {
+	public String addAppointment(String appointmentID, String appointmentType, int capacity, String adminID) throws IOException {
 		
 		DatagramSocket socket = null ;
 		
 		String sequencerData= appointmentID+appointmentType+capacity+adminID;
+		String response = null;
 		
 		try {
 			socket = new DatagramSocket() ;
 			
 			// Prepare containers for the outgoing request and incoming reply.
 			byte[] requestByte = sequencerData.getBytes();
+			byte[] replyByte = new byte[requestByte.length];
 			
 			// Prepare a socket and a packet for the request.
 			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
+			DatagramPacket replyPacket = new DatagramPacket(replyByte, replyByte.length);
 			
 			// Send out the packet
 			socket.send(reqPacket);
+			
+			response =new String(replyPacket.getData(), "UTF-8"); 
+			
+			
 			
 		} catch (SocketException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+		return response;
+		
+
 		
 	}
 
 
 	@Override
-	public void removeAppointment(String appointmentID, String appointmentType, String adminID) throws IOException {
+	public String removeAppointment(String appointmentID, String appointmentType, String adminID) throws IOException {
 
 		DatagramSocket socket = null ;
 		String sequencerData=appointmentID+appointmentType+adminID;
+		String response = null;
 		
-		
-			try {
-				socket = new DatagramSocket() ;
-				
-				// Prepare containers for the outgoing request and incoming reply.
-				byte[] requestByte = sequencerData.getBytes();
-				
-				// Prepare a socket and a packet for the request.
-				DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
-				
-				// Send out the packet
-				socket.send(reqPacket);
-				
-			} catch (SocketException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			socket = new DatagramSocket() ;
+			
+			// Prepare containers for the outgoing request and incoming reply.
+			byte[] requestByte = sequencerData.getBytes();
+			byte[] replyByte = new byte[requestByte.length];
+			
+			// Prepare a socket and a packet for the request.
+			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
+			DatagramPacket replyPacket = new DatagramPacket(replyByte, replyByte.length);
+			
+			// Send out the packet
+			socket.send(reqPacket);
+			
+			response =new String(replyPacket.getData(), "UTF-8"); 
+			
+			
+			
+		} catch (SocketException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return response;
 	
 		
 	}
 
 
 	@Override
-	public void listAppointmentAvailability(String appointmentType) throws IOException {
+	public String listAppointmentAvailability(String appointmentType) throws IOException {
 		
 		DatagramSocket socket = null ;
+		String sequencerData=appointmentType;
+		String response = null;
 		
 		try {
-			try {
-				socket = new DatagramSocket() ;
-			} catch (SocketException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		finally {
+			socket = new DatagramSocket() ;
+			
+			// Prepare containers for the outgoing request and incoming reply.
+			byte[] requestByte = sequencerData.getBytes();
+			byte[] replyByte = new byte[requestByte.length];
+			
+			// Prepare a socket and a packet for the request.
+			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
+			DatagramPacket replyPacket = new DatagramPacket(replyByte, replyByte.length);
+			
+			// Send out the packet
+			socket.send(reqPacket);
+			
+			response =new String(replyPacket.getData(), "UTF-8"); 
 			
 			
+			
+		} catch (SocketException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
+
+		return response;
 	}
+		
+	
 
 
 	@Override
-	public void swapAppointment(String patientID, String oldAppointmentID, String oldAppointmentType,
-			String newAppointmentID, String newAppointmentType) {
+	public String swapAppointment(String patientID, String oldAppointmentID, String oldAppointmentType,
+			String newAppointmentID, String newAppointmentType) throws IOException {
 		
 		String sequencerData = oldAppointmentID+oldAppointmentType+newAppointmentID+newAppointmentType;
 				
 		DatagramSocket socket = null ;
+		String response = null;
 		
 		try {
-			try {
-				socket = new DatagramSocket() ;
-			} catch (SocketException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		finally {
+			socket = new DatagramSocket() ;
+			
+			// Prepare containers for the outgoing request and incoming reply.
+			byte[] requestByte = sequencerData.getBytes();
+			byte[] replyByte = new byte[requestByte.length];
+			
+			// Prepare a socket and a packet for the request.
+			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
+			DatagramPacket replyPacket = new DatagramPacket(replyByte, replyByte.length);
+			
+			// Send out the packet
+			socket.send(reqPacket);
+			
+			response =new String(replyPacket.getData(), "UTF-8"); 
 			
 			
+			
+		} catch (SocketException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
+		return response;
 		
 	}
 
