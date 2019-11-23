@@ -21,6 +21,8 @@ import org.omg.CORBA.ORBPackage.InvalidName;
 import org.omg.CosNaming.NamingContextExt;
 import org.omg.CosNaming.NamingContextExtHelper;
 
+import corba.frontEndOperationsPOA;
+
 /*
  * This class will implement a CORBA front end (FE) which receives a client request
 and forwards it to a failure-free sequencer . the three replicas execute client requests in total order and return the
@@ -28,10 +30,10 @@ results back to the FE which in turn returns a single correct result back to the
 soon as two identical (correct) results are received from the replicas.
  */
 
-public class FrontEnd {
+public class FrontEnd extends frontEndOperationsPOA {
 	
 	private  HashMap<String,InetSocketAddress> replicaManagerDatabase = new HashMap<String, InetSocketAddress>();
-	private InetSocketAddress sequencerAddress;
+	private String sequencerAddress;
 
 
 	public void initialzeORB () throws InvalidName {
@@ -79,6 +81,63 @@ public class FrontEnd {
 	}
 	
 	public void replyClient() {
+		
+	}
+
+
+	@Override
+	public void bookAppointment(String patientID, String appointmentID, String appointmentType) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void getAppointmentSchedule(String patientID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void cancelAppointment(String patientID, String appointmentID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void addAppointment(String appointmentID, String appointmentType, int capacity, String adminID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void removeAppointment(String appointmentID, String appointmentType, String adminID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void listAppointmentAvailability(String appointmentType) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void swapAppointment(String patientID, String oldAppointmentID, String oldAppointmentType,
+			String newAppointmentID, String newAppointmentType) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void shutdown() {
+		// TODO Auto-generated method stub
 		
 	}
 	
