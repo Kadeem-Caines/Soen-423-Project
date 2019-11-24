@@ -54,6 +54,8 @@ public class Client {
 		boolean start=true;
 		String appointmentID;
 		String appointmentType;
+		String newAppointmentID;
+		String newAppointmentType;
 		int capacity;
 		
 		
@@ -139,11 +141,14 @@ public class Client {
 						 
 					 } // end of second while loop 
 						
+					 
+						System.out.println("Set up complete ");
+						
 					 start=true;
 					 
 					 while(start) { //third while loop. keep asking what option function user wants to perform
 					 
-					 	System.out.println("Set up complete ");
+					 
 					 	System.out.println("Please choose one of the following options");
 
 						System.out.println("0.Exit program");
@@ -172,7 +177,7 @@ public class Client {
 							  System.out.print("Enter appointment type");
 							appointmentType= scanner.next();
 								 
-						    start=false;
+						
 						    break;
 						    
 						  case 2:
@@ -181,13 +186,13 @@ public class Client {
 								 appointmentID = scanner.next();
 							  
 							 
-							start=false;
+							
 						    break;
 						    
 						    
 						  case 3:
 							  System.out.print("Searching up appointments for"+patientID);
-							  start=false;
+							  
 							  break;
 							  
 							  
@@ -202,22 +207,36 @@ public class Client {
 								
 								System.out.print("Enter appointment capacity");
 								capacity= scanner.nextInt();
-								start=false;
+								
 							  break;
 							  
 						  case 5:
-							  
-							  
+							  System.out.print("Enter appointment type");
+								appointmentType= scanner.next();
+								
 							  break;
 							  
 						  case 6:
 							  
+							  System.out.print("Enter appointment ID");
+							  appointmentID = scanner.next();
+							  
+							  System.out.print("Enter appointment type");
+								appointmentType= scanner.next();
+								
+								  System.out.print("Enter new appointment ID");
+									newAppointmentID= scanner.next();
+									
+
+									  System.out.print("Enter new appointment type");
+										newAppointmentType= scanner.next();
+										start=false;
 							  break;
 							  
 					
 					
 						  default:
-							  start=false;
+							  
 							  System.out.println("Invalid Choice. Try Again");
 							 
 						}
