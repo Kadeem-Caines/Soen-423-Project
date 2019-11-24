@@ -1,6 +1,12 @@
 package Client;
 
 import org.omg.CosNaming.*;
+import org.omg.CosNaming.NamingContextPackage.CannotProceed;
+import org.omg.CosNaming.NamingContextPackage.NotFound;
+
+import corbaFrontEnd.frontEndOperations;
+import corbaFrontEnd.frontEndOperationsHelper;
+
 import org.omg.CORBA.*;
 import org.omg.CORBA.ORBPackage.InvalidName;
 
@@ -19,7 +25,7 @@ public class Client {
 	
 
 	
-	public static void main(String[] args) throws InvalidName {
+	public static void main(String[] args) throws InvalidName, NotFound, CannotProceed, org.omg.CosNaming.NamingContextPackage.InvalidName, IOException {
 	
 		
 		// initialize client ORB
@@ -37,6 +43,8 @@ public class Client {
         // Use NamingContextExt instead of NamingContext, 
         // part of the Interoperable naming Service.  
         NamingContextExt ncRef =  NamingContextExtHelper.narrow(objRef);
+        
+        frontEndOperations object;
        
 		
 		//Variables used for creating patient or admin ID
@@ -44,6 +52,8 @@ public class Client {
 		String patientID = null;
 		String adminID=null;
 		String city = null;
+	
+		
 		
 		
 		
@@ -176,6 +186,10 @@ public class Client {
 							
 							  System.out.print("Enter appointment type");
 							appointmentType= scanner.next();
+							
+							object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
+							
+							object.bookAppointment(patientID,appointmentID,appointmentType);
 								 
 						
 						    break;

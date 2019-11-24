@@ -1,0 +1,4 @@
+Oct 27, 2019 11:22:35 AM Client.PatientClient <init>
+INFO: Attempting to start client for patient:SHEP0001
+Oct 27, 2019 11:22:35 AM Client.PatientClient <init>
+INFO: Login successful. | PatientID: SHEP0001 | Hospital Server: SHE

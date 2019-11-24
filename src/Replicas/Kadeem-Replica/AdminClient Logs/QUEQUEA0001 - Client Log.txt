@@ -1,0 +1,6 @@
+Oct 27, 2019 9:41:41 AM Client.AdminClient <init>
+INFO: Login successful. | AdminID: QUEA0001 | Hospital Server: QUE
+Oct 27, 2019 9:41:41 AM Client.AdminClient removeAppointment
+INFO: Admin QUEA0001  is attempting to remove an appointment
+Oct 27, 2019 9:41:41 AM Client.AdminClient removeAppointment
+INFO: AdminQUEA0001is contacting their appropriate server in order to book the appointment

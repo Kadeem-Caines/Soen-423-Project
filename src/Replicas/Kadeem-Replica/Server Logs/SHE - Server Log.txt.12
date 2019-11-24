@@ -1,0 +1,6 @@
+Oct 26, 2019 10:55:54 PM Server.HospitalServerImpl <init>
+INFO: Initializing ServerSHE
+Oct 26, 2019 10:55:54 PM Server.HospitalServerImpl <init>
+INFO: Server: SHE initialization success.
+Oct 26, 2019 10:55:54 PM Server.HospitalServerImpl <init>
+INFO: Server: SHE port is : 44950

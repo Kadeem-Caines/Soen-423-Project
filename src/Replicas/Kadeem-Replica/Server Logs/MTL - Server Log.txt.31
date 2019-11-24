@@ -1,0 +1,8 @@
+Oct 27, 2019 9:41:30 AM Server.HospitalServerImpl <init>
+INFO: Initializing ServerMTL
+Oct 27, 2019 9:41:30 AM Server.HospitalServerImpl <init>
+INFO: Server: MTL initialization success.
+Oct 27, 2019 9:41:30 AM Server.HospitalServerImpl <init>
+INFO: Server: MTL port is : 101
+Oct 27, 2019 9:41:41 AM Server.HospitalServerImpl removeAppointment
+SEVERE: Server Log: | Hospital Mismatch | Patient ID: QUEA0001

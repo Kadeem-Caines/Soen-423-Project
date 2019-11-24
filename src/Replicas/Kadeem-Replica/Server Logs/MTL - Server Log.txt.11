@@ -1,0 +1,6 @@
+Oct 25, 2019 10:37:32 PM Server.HospitalServerImpl <init>
+INFO: Initializing ServerMTL
+Oct 25, 2019 10:37:32 PM Server.HospitalServerImpl <init>
+INFO: Server: MTL initialization success.
+Oct 25, 2019 10:37:32 PM Server.HospitalServerImpl <init>
+INFO: Server: MTL port is : 44948

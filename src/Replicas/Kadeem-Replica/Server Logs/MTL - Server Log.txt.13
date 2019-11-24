@@ -1,0 +1,30 @@
+Oct 25, 2019 11:07:48 PM Server.HospitalServerImpl <init>
+INFO: Initializing ServerMTL
+Oct 25, 2019 11:07:48 PM Server.HospitalServerImpl <init>
+INFO: Server: MTL initialization success.
+Oct 25, 2019 11:07:48 PM Server.HospitalServerImpl <init>
+INFO: Server: MTL port is : 44948
+Oct 25, 2019 11:07:54 PM Server.HospitalServerImpl addAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:MTLA0001  Requesting that appointmentID:QUEA100919 appointment type: Dental  be added
+Oct 25, 2019 11:07:54 PM Server.HospitalServerImpl addAppointment
+INFO: Server Log: Operation successful. Appointment: QUEA100919 was added to database
+Oct 25, 2019 11:07:54 PM Server.HospitalServerImpl addAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:MTLA0001  Requesting that appointmentID:MTLA100919 appointment type: Surgeon  be added
+Oct 25, 2019 11:07:54 PM Server.HospitalServerImpl addAppointment
+INFO: Server Log: Operation successful. Appointment: MTLA100919 was added to database
+Oct 25, 2019 11:07:58 PM Server.HospitalServerImpl bookAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:MTLP0001  Requesting that appointmentID:QUEE100919 appointment type: Dental  be added
+Oct 25, 2019 11:07:58 PM Server.HospitalServerImpl bookAppointment
+INFO: Server Log: Operation failed. Appointment: QUEE100919 was not added to database
+Oct 25, 2019 11:07:58 PM Server.HospitalServerImpl swapAppointment
+INFO: Server log: Request type: Swap an appointment.Requested by:MTLP0001  Requesting that appointmentID:QUEE100919 appointment type: Dental  be swapped withMTLA100919 appointment typeSurgeon
+Oct 25, 2019 11:07:58 PM Server.HospitalServerImpl swapAppointment
+INFO: Server Log: Operation failed. Appointment: QUEE100919 was not added to database
+Oct 25, 2019 11:08:28 PM Server.HospitalServerImpl bookAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:MTLP0001  Requesting that appointmentID:QUEA100919 appointment type: Dental  be added
+Oct 25, 2019 11:08:28 PM Server.HospitalServerImpl bookAppointment
+INFO: Server log: Operation completed MTLP0001 has booked appointmentQUEA100919
+Oct 25, 2019 11:08:28 PM Server.HospitalServerImpl swapAppointment
+INFO: Server log: Request type: Swap an appointment.Requested by:MTLP0001  Requesting that appointmentID:QUEE100919 appointment type: Dental  be swapped withMTLA100919 appointment typeSurgeon
+Oct 25, 2019 11:08:28 PM Server.HospitalServerImpl swapAppointment
+INFO: Server Log: Operation failed. Appointment: QUEE100919 was not added to database

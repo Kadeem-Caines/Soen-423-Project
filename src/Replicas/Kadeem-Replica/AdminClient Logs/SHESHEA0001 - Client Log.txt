@@ -1,0 +1,2 @@
+Oct 27, 2019 11:22:13 AM Client.AdminClient <init>
+INFO: Login successful. | AdminID: SHEA0001 | Hospital Server: SHE

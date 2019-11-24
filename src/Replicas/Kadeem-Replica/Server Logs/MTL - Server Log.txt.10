@@ -1,0 +1,8 @@
+Oct 23, 2019 10:48:12 PM Server.HospitalServerImpl <init>
+INFO: Initializing ServerMTL
+Oct 23, 2019 10:48:12 PM Server.HospitalServerImpl <init>
+INFO: Server: MTL initialization success.
+Oct 23, 2019 10:48:12 PM Server.HospitalServerImpl <init>
+INFO: Server: MTL port is : 44948
+Oct 23, 2019 10:48:20 PM Server.HospitalServerImpl swapAppointment
+INFO: Server log: Request type: Swap an appointment.Requested by:MTLP0001  Requesting that appointmentID:QUEE100919 appointment type: Surgeon  be swapped withMTLA043543 appointment typeDental
