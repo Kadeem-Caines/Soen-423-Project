@@ -43,14 +43,18 @@ public class Client {
 		Random rand = new Random();
 		String patientID = null;
 		String adminID=null;
-		String appointmentID=null;
 		String city = null;
+		
+		
 		
 		//Variables used for taking input and reasking if wrong input was entered		
 		Scanner scanner = new Scanner(System.in);
 		int input;
 		String input1;
 		boolean start=true;
+		String appointmentID;
+		String appointmentType;
+		int capacity;
 		
 		
 				
@@ -146,6 +150,9 @@ public class Client {
 						System.out.println("1.Book an appointment");
 						System.out.println("2.Cancel an appointment!");
 						System.out.println("3.View appointments schedule");
+						System.out.println("4.Add appointments");
+						System.out.println("5.List appointments");
+						System.out.println("6.Swap appointments");
 						
 						input = scanner.nextInt();
 						
@@ -158,12 +165,20 @@ public class Client {
 								 System.exit(0);
 							  
 						  case 1:
-						   
+							  
+							  System.out.print("Enter appointmentID");
+							appointmentID = scanner.next();
 							
+							  System.out.print("Enter appointment type");
+							appointmentType= scanner.next();
+								 
 						    start=false;
 						    break;
 						    
 						  case 2:
+							  
+							  System.out.print("Enter appointmentID");
+								 appointmentID = scanner.next();
 							  
 							 
 							start=false;
@@ -171,14 +186,38 @@ public class Client {
 						    
 						    
 						  case 3:
+							  System.out.print("Searching up appointments for"+patientID);
+							  start=false;
 							  break;
 							  
 							  
 						  case 4:
+							  
+							  
+							  System.out.print("Enter appointmentID");
+							  appointmentID = scanner.next();
+							  
+							  System.out.print("Enter appointment type");
+								appointmentType= scanner.next();
+								
+								System.out.print("Enter appointment capacity");
+								capacity= scanner.nextInt();
+								start=false;
+							  break;
+							  
+						  case 5:
+							  
+							  
+							  break;
+							  
+						  case 6:
+							  
 							  break;
 							  
 					
+					
 						  default:
+							  start=false;
 							  System.out.println("Invalid Choice. Try Again");
 							 
 						}
