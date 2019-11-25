@@ -1,0 +1,28 @@
+Oct 27, 2019 11:22:35 AM Client.PatientClient <init>
+INFO: Attempting to start client for patient:MTLP0001
+Oct 27, 2019 11:22:35 AM Client.PatientClient <init>
+INFO: Login successful. | PatientID: MTLP0001 | Hospital Server: MTL
+Oct 27, 2019 11:22:35 AM Client.PatientClient bookAppointment
+INFO: Patient MTLP0001  is attempting to book an appointment
+Oct 27, 2019 11:22:35 AM Client.PatientClient bookAppointment
+INFO: PatientMTLP0001is contacting their appropriate server in order to book the appointment
+Oct 27, 2019 11:22:35 AM Client.PatientClient bookAppointment
+INFO: Patient MTLP0001  is attempting to book an appointment
+Oct 27, 2019 11:22:35 AM Client.PatientClient bookAppointment
+INFO: PatientMTLP0001is contacting their appropriate server in order to book the appointment
+Oct 27, 2019 11:22:35 AM Client.PatientClient bookAppointment
+INFO: Patient MTLP0001  is attempting to book an appointment
+Oct 27, 2019 11:22:35 AM Client.PatientClient bookAppointment
+INFO: PatientMTLP0001is contacting their appropriate server in order to book the appointment
+Oct 27, 2019 11:22:35 AM Client.PatientClient getAppointmentSchedule
+INFO: PatientMTLP0001is attempting to get the appointment schedules from all servers
+Oct 27, 2019 11:22:35 AM Client.PatientClient getAppointmentSchedule
+INFO: PatientMTLP0001is contacting their appropriate server in order to book the appointment
+Oct 27, 2019 11:22:35 AM Client.PatientClient cancelAppointment
+INFO: PatientMTLP0001is  attempting to cancel an appointment
+Oct 27, 2019 11:22:35 AM Client.PatientClient cancelAppointment
+INFO: PatientMTLP0001is contacting their appropriate server in order to book the appointment
+Oct 27, 2019 11:22:35 AM Client.PatientClient swapAppointment
+INFO: PatientMTLP0001is  attempting to cancel an appointment
+Oct 27, 2019 11:22:35 AM Client.PatientClient swapAppointment
+INFO: PatientMTLP0001is contacting their appropriate server in order to book the appointment

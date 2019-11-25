@@ -1,0 +1,24 @@
+module corbaFrontEnd{
+
+interface frontEndOperations{
+
+ string bookAppointment (in string patientID, in string appointmentID, in string appointmentType) ;
+	
+ string getAppointmentSchedule (in string patientID);
+	
+string cancelAppointment (in string patientID, in string appointmentID);
+	
+string addAppointment (in string appointmentID, in string appointmentType, in long capacity, in string adminID);
+	
+ string removeAppointment (in string appointmentID, in string appointmentType, in string adminID);
+	
+string listAppointmentAvailability (in string appointmentType);
+ 
+ string swapAppointment (in string patientID, in string oldAppointmentID,in string oldAppointmentType,
+			in string newAppointmentID, in string newAppointmentType);
+			
+oneway void shutdown();
+	
+};
+
+};

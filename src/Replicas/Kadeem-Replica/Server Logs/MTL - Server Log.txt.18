@@ -1,0 +1,22 @@
+Oct 26, 2019 10:41:07 PM Server.HospitalServerImpl <init>
+INFO: Initializing ServerMTL
+Oct 26, 2019 10:41:07 PM Server.HospitalServerImpl <init>
+INFO: Server: MTL initialization success.
+Oct 26, 2019 10:41:07 PM Server.HospitalServerImpl <init>
+INFO: Server: MTL port is : 44948
+Oct 26, 2019 10:41:15 PM Server.HospitalServerImpl addAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:QUEA0001  Requesting that appointmentID:SHEA100535 appointment type: Surgeon  be added
+Oct 26, 2019 10:41:15 PM Server.HospitalServerImpl addAppointment
+SEVERE: Server Log: | Hospital Mismatch | Patient ID: QUEA0001
+Oct 26, 2019 10:43:39 PM Server.HospitalServerImpl addAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:MTL0001  Requesting that appointmentID:SHEA100535 appointment type: Surgeon  be added
+Oct 26, 2019 10:43:39 PM Server.HospitalServerImpl addAppointment
+INFO: Server Log: Operation successful. Appointment: SHEA100535 was added to database
+Oct 26, 2019 10:44:14 PM Server.HospitalServerImpl addAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:MTLA0001  Requesting that appointmentID:SHEA100535 appointment type: Surgeon  be added
+Oct 26, 2019 10:44:14 PM Server.HospitalServerImpl addAppointment
+INFO: Server Log: Operation failed. Appointment: SHEA100535 was not added to database
+Oct 26, 2019 10:45:30 PM Server.HospitalServerImpl addAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:MTLA0001  Requesting that appointmentID:SHEA100535 appointment type: Surgeon  be added
+Oct 26, 2019 10:45:30 PM Server.HospitalServerImpl addAppointment
+INFO: Server Log: Operation failed. Appointment: SHEA100535 was not added to database

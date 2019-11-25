@@ -1,0 +1,6 @@
+Oct 27, 2019 12:18:23 AM Server.HospitalServerImpl <init>
+INFO: Initializing ServerQUE
+Oct 27, 2019 12:18:23 AM Server.HospitalServerImpl <init>
+INFO: Server: QUE initialization success.
+Oct 27, 2019 12:18:23 AM Server.HospitalServerImpl <init>
+INFO: Server: QUE port is : 44949

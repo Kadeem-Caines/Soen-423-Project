@@ -1,0 +1,46 @@
+Oct 27, 2019 11:21:47 AM Server.HospitalServerImpl <init>
+INFO: Initializing ServerMTL
+Oct 27, 2019 11:21:47 AM Server.HospitalServerImpl <init>
+INFO: Server: MTL initialization success.
+Oct 27, 2019 11:21:47 AM Server.HospitalServerImpl <init>
+INFO: Server: MTL port is : 101
+Oct 27, 2019 11:22:13 AM Server.HospitalServerImpl addAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:MTLA0001  Requesting that appointmentID:MTLA100919 appointment type: Dental  be added
+Oct 27, 2019 11:22:13 AM Server.HospitalServerImpl addAppointment
+INFO: Server Log: Operation successful. Appointment: MTLA100919 was added to database
+Oct 27, 2019 11:22:13 AM Server.HospitalServerImpl addAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:MTLA0001  Requesting that appointmentID:MTLE100654 appointment type: Surgeon  be added
+Oct 27, 2019 11:22:13 AM Server.HospitalServerImpl addAppointment
+INFO: Server Log: Operation successful. Appointment: MTLE100654 was added to database
+Oct 27, 2019 11:22:13 AM Server.HospitalServerImpl addAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:MTLA0001  Requesting that appointmentID:MTLA10574 appointment type: Surgeon  be added
+Oct 27, 2019 11:22:13 AM Server.HospitalServerImpl addAppointment
+INFO: Server Log: Operation successful. Appointment: MTLA10574 was added to database
+Oct 27, 2019 11:22:13 AM Server.HospitalServerImpl addAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:MTLA0001  Requesting that appointmentID:QUEA100919 appointment type: Dental  be added
+Oct 27, 2019 11:22:13 AM Server.HospitalServerImpl addAppointment
+INFO: Server Log: Operation failed. Appointment: QUEA100919 was not added to database
+Oct 27, 2019 11:22:35 AM Server.HospitalServerImpl bookAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:MTLP0001  Requesting that appointmentID:MTLA100919 appointment type: Dental  be added
+Oct 27, 2019 11:22:35 AM Server.HospitalServerImpl bookAppointment
+INFO: Server log: Operation completed MTLP0001 has booked appointmentMTLA100919
+Oct 27, 2019 11:22:35 AM Server.HospitalServerImpl bookAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:MTLP0001  Requesting that appointmentID:QUEA100919 appointment type: Dental  be added
+Oct 27, 2019 11:22:35 AM Server.HospitalServerImpl bookAppointment
+INFO: Server Log: Operation failed. Appointment: QUEA100919 was not added to database
+Oct 27, 2019 11:22:35 AM Server.HospitalServerImpl bookAppointment
+INFO: Server log: Request type: Book an appoitment.Requested by:MTLP0001  Requesting that appointmentID:MTLA10574 appointment type: Surgeon  be added
+Oct 27, 2019 11:22:35 AM Server.HospitalServerImpl bookAppointment
+INFO: Server log: Operation completed MTLP0001 has booked appointmentMTLA10574
+Oct 27, 2019 11:22:35 AM Server.HospitalServerImpl getAppointmentSchedule
+INFO: Server log: Request type: Get appointment schedule.Requested by:MTLP0001  Requesting appointments in all hospitals
+Oct 27, 2019 11:22:35 AM Server.HospitalServerImpl getAppointmentSchedule
+INFO: Server Log: Operation successful.
+Oct 27, 2019 11:22:35 AM Server.HospitalServerImpl cancelAppointment
+INFO: Server log: Request type: Cancel an appoitment.Requested by:MTLA10574  Requesting that appointmentID:MTLP0001  to be cancelled
+Oct 27, 2019 11:22:35 AM Server.HospitalServerImpl cancelAppointment
+INFO: Server log: Operation failedAppointmentID:MTLP0001 was not cancelled
+Oct 27, 2019 11:22:35 AM Server.HospitalServerImpl swapAppointment
+INFO: Server log: Request type: Swap an appointment.Requested by:MTLP0001  Requesting that appointmentID:MTLA100919 appointment type: Dental  be swapped withMTLE100654 appointment typeSurgeon
+Oct 27, 2019 11:22:35 AM Server.HospitalServerImpl swapAppointment
+INFO: Server log: Operation completed MTLP0001 has booked appointmentMTLE100654

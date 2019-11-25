@@ -1,0 +1,18 @@
+Oct 27, 2019 11:22:13 AM Client.AdminClient <init>
+INFO: Login successful. | AdminID: MTLA0001 | Hospital Server: MTL
+Oct 27, 2019 11:22:13 AM Client.AdminClient addAppointment
+INFO: Admin MTLA0001  is attempting to add an appointment
+Oct 27, 2019 11:22:13 AM Client.AdminClient addAppointment
+INFO: AdminMTLA0001is contacting their appropriate server in order to book the appointment
+Oct 27, 2019 11:22:13 AM Client.AdminClient addAppointment
+INFO: Admin MTLA0001  is attempting to add an appointment
+Oct 27, 2019 11:22:13 AM Client.AdminClient addAppointment
+INFO: AdminMTLA0001is contacting their appropriate server in order to book the appointment
+Oct 27, 2019 11:22:13 AM Client.AdminClient addAppointment
+INFO: Admin MTLA0001  is attempting to add an appointment
+Oct 27, 2019 11:22:13 AM Client.AdminClient addAppointment
+INFO: AdminMTLA0001is contacting their appropriate server in order to book the appointment
+Oct 27, 2019 11:22:13 AM Client.AdminClient addAppointment
+INFO: Admin MTLA0001  is attempting to add an appointment
+Oct 27, 2019 11:22:13 AM Client.AdminClient addAppointment
+INFO: AdminMTLA0001is contacting their appropriate server in order to book the appointment
