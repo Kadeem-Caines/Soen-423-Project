@@ -49,8 +49,7 @@ public class Client {
 		
 		//Variables used for creating patient or admin ID
 		Random rand = new Random();
-		String patientID = null;
-		String adminID=null;
+		String ID = null;
 		String city = null;
 	
 		
@@ -131,15 +130,15 @@ public class Client {
 						 {				// switch statement used to determine patient or admin ID
 						  case 1:
 						   
-							  adminID=city+String.format("%04d", rand.nextInt(10000));
-								 System.out.println("Your unique ID is:" + adminID);
+							  ID=city+String.format("%04d", rand.nextInt(10000));
+								 System.out.println("Your unique ID is:" + ID);
 						    start=false;
 						    break;
 						    
 						  case 2:
 							  
-							 patientID=city+String.format("%04d", rand.nextInt(10000));
-							 System.out.println("Your unique ID is:" + patientID);
+							 ID=city+String.format("%04d", rand.nextInt(10000));
+							 System.out.println("Your unique ID is:" + ID);
 							start=false;
 						    break;
 						    
@@ -165,9 +164,10 @@ public class Client {
 						System.out.println("1.Book an appointment");
 						System.out.println("2.Cancel an appointment!");
 						System.out.println("3.View appointments schedule");
-						System.out.println("4.Add appointments");
-						System.out.println("5.List appointments");
+						System.out.println("4.Add appointments (Admins only)");
+						System.out.println("5.List appointments (Admins only)");
 						System.out.println("6.Swap appointments");
+						System.out.println("7.Remove appointments (Admins only)");
 						
 						input = scanner.nextInt();
 						
@@ -181,6 +181,7 @@ public class Client {
 							  
 						  case 1:
 							  
+						
 							  System.out.print("Enter appointmentID");
 							appointmentID = scanner.next();
 							
@@ -189,7 +190,7 @@ public class Client {
 							
 							object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
 							
-							object.bookAppointment(patientID,appointmentID,appointmentType);
+							object.bookAppointment(ID,appointmentID,appointmentType);
 								 
 						
 						    break;
@@ -205,13 +206,18 @@ public class Client {
 						    
 						    
 						  case 3:
-							  System.out.print("Searching up appointments for"+patientID);
+							  System.out.print("Searching up appointments for"+ID);
 							  
 							  break;
 							  
 							  
 						  case 4:
 							  
+							  if(ID.contains("P")) {
+								  
+								  System.out.print("You are not an admin. Please choose another option");
+								  break;
+							  }
 							  
 							  System.out.print("Enter appointmentID");
 							  appointmentID = scanner.next();
@@ -225,6 +231,13 @@ public class Client {
 							  break;
 							  
 						  case 5:
+							  
+							  if(ID.contains("P")) {
+								  
+								  System.out.print("You are not an admin. Please choose another option");
+								  break;
+							  }
+	  
 							  System.out.print("Enter appointment type");
 								appointmentType= scanner.next();
 								
@@ -247,8 +260,21 @@ public class Client {
 										start=false;
 							  break;
 							  
+						  case 7: 
+							  
+							  if(ID.contains("P")) {
+								  
+								  System.out.print("You are not an admin. Please choose another option");
+								  break;
+							  }
+							  
+						  System.out.print("Enter appointment ID");
+						  appointmentID = scanner.next();
+						  
+						  System.out.print("Enter appointment type");
+							appointmentType= scanner.next();
 					
-					
+					break;
 						  default:
 							  
 							  System.out.println("Invalid Choice. Try Again");
