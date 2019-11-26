@@ -62,7 +62,7 @@ public class FrontEnd extends frontEndOperationsPOA {
 	public String bookAppointment(String patientID, String appointmentID, String appointmentType) throws IOException  {
 		
 		DatagramSocket socket = null ;
-		String  sequencerData=patientID+appointmentID+appointmentType;
+		String  sequencerData="bookAppointment"+":"+patientID+":"+appointmentID+":"+appointmentType;
 		String response = null;
 		
 		try {
@@ -96,7 +96,7 @@ public class FrontEnd extends frontEndOperationsPOA {
 	public String getAppointmentSchedule(String patientID) throws IOException {
 		
 		DatagramSocket socket = null ;
-		String sequencerData=patientID;
+		String sequencerData="getAppointment"+":"+patientID;
 		String response = null;
 		
 		try {
@@ -131,7 +131,8 @@ public class FrontEnd extends frontEndOperationsPOA {
 	public String cancelAppointment(String patientID, String appointmentID) throws IOException {
 		DatagramSocket socket = null ;
 		
-		String sequencerData=patientID+appointmentID;
+		String sequencerData="cancelAppointment"+":"+patientID+":"+appointmentID;
+				
 		String response = null;
 		
 		try {
@@ -167,7 +168,7 @@ public class FrontEnd extends frontEndOperationsPOA {
 		
 		DatagramSocket socket = null ;
 		
-		String sequencerData= appointmentID+appointmentType+capacity+adminID;
+		String sequencerData= "addAppointment"+":"+appointmentID+":"+appointmentType+":"+capacity+":"+adminID;
 		String response = null;
 		
 		try {
@@ -204,7 +205,7 @@ public class FrontEnd extends frontEndOperationsPOA {
 	public String removeAppointment(String appointmentID, String appointmentType, String adminID) throws IOException {
 
 		DatagramSocket socket = null ;
-		String sequencerData=appointmentID+appointmentType+adminID;
+		String sequencerData="removeAppointment"+":"+appointmentID+":"+appointmentType+":"+adminID;
 		String response = null;
 		
 		try {
@@ -240,7 +241,7 @@ public class FrontEnd extends frontEndOperationsPOA {
 	public String listAppointmentAvailability(String appointmentType) throws IOException {
 		
 		DatagramSocket socket = null ;
-		String sequencerData=appointmentType;
+		String sequencerData="listAppointmentAvailability"+":"+appointmentType;
 		String response = null;
 		
 		try {
@@ -276,7 +277,7 @@ public class FrontEnd extends frontEndOperationsPOA {
 	public String swapAppointment(String patientID, String oldAppointmentID, String oldAppointmentType,
 			String newAppointmentID, String newAppointmentType) throws IOException {
 		
-		String sequencerData = oldAppointmentID+oldAppointmentType+newAppointmentID+newAppointmentType;
+		String sequencerData = "swapAppointment"+":"+oldAppointmentID+":"+oldAppointmentType+":"+newAppointmentID+":"+newAppointmentType;
 				
 		DatagramSocket socket = null ;
 		String response = null;
@@ -318,24 +319,12 @@ public class FrontEnd extends frontEndOperationsPOA {
 	
 	public static void main(String[] args) throws InvalidName {
 		
-		Properties props = new Properties();
-	    props.put("org.omg.CORBA.ORBInitialPort", "900");
-	    props.put("org.omg.CORBA.ORBInitialHost", "localhost");
-	 
- 
-        // create and initialize the ORB
-	     ORB orb = ORB.init(args, null);
+		FrontEnd test= new FrontEnd();
+		
+		
 
-        // get the root naming context
-        org.omg.CORBA.Object objRef = 
-	     orb.resolve_initial_references("NameService");
-        // Use NamingContextExt instead of NamingContext, 
-        // part of the Interoperable naming Service.  
-        NamingContextExt ncRef = 
-          NamingContextExtHelper.narrow(objRef);
-	}
+}
 	
-
 }
 	
 	
