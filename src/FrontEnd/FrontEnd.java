@@ -35,9 +35,8 @@ public class FrontEnd extends frontEndOperationsPOA {
 	
 	private  HashMap<String,InetSocketAddress> replicaManagerDatabase = new HashMap<String, InetSocketAddress>();
 	private InetSocketAddress sequencerAddress;
-	public static int UDPPortSequencer = 1000;
-	public static int UDPPortReplicaListener = 1001;
-
+	private static int UDPPortReplicaListener = 1001;
+	private static int UDPPortSequencer=1002;
 
 
 	
@@ -46,17 +45,30 @@ public class FrontEnd extends frontEndOperationsPOA {
 	}
 	
 	
-	public void requestReplySequencer() {
+
+	public void replicaListener() {
+		
+		DatagramSocket aSocket = null;
+		try {
+			aSocket = new DatagramSocket(this.UDPPortReplicaListener);
+			byte[] buffer = new byte[1000];
+			System.out.println("Front end is now listening for Replica");
+			while (true) {
+				DatagramPacket request = new DatagramPacket(buffer, buffer.length);
+				aSocket.receive(request);
+			
+				
+			}
+		} catch (SocketException e) {
+			System.out.println("Socket: " + e.getMessage());
+		} catch (IOException e) {
+			System.out.println("IO: " + e.getMessage());
+		} finally {
+			if (aSocket != null)
+				aSocket.close();
+		}
 		
 	}
-	
-	public void sendRequestSequencer() {
-		
-
-		
-	}
-
-
 
 	@Override
 	public String bookAppointment(String patientID, String appointmentID, String appointmentType) throws IOException  {
@@ -74,12 +86,10 @@ public class FrontEnd extends frontEndOperationsPOA {
 			
 			// Prepare a socket and a packet for the request.
 			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
-			DatagramPacket replyPacket = new DatagramPacket(replyByte, replyByte.length);
 			
 			// Send out the packet
 			socket.send(reqPacket);
-			
-			response =new String(replyPacket.getData(), "UTF-8"); 
+	
 			
 			
 			
@@ -319,7 +329,7 @@ public class FrontEnd extends frontEndOperationsPOA {
 	
 	public static void main(String[] args) throws InvalidName {
 		
-		FrontEnd test= new FrontEnd();
+
 		
 		
 

@@ -35,7 +35,7 @@ public class Client {
 	 
  
         // create and initialize the ORB
-	     ORB orb = ORB.init(args, null);
+	     ORB orb = ORB.init(args, props);
 
         // get the root naming context
         org.omg.CORBA.Object objRef = 
@@ -44,6 +44,7 @@ public class Client {
         // part of the Interoperable naming Service.  
         NamingContextExt ncRef =  NamingContextExtHelper.narrow(objRef);
         
+        //      frontEndOperations object used to call frontEndOperations methods through corba
         frontEndOperations object;
        
 		
@@ -200,13 +201,19 @@ public class Client {
 							  System.out.print("Enter appointmentID");
 								 appointmentID = scanner.next();
 							  
-							 
+									object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
+									
+									object.cancelAppointment(ID,appointmentID);
 							
 						    break;
 						    
 						    
 						  case 3:
 							  System.out.print("Searching up appointments for"+ID);
+							  
+								object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
+								
+								object.getAppointmentSchedule(ID);
 							  
 							  break;
 							  
@@ -228,6 +235,10 @@ public class Client {
 								System.out.print("Enter appointment capacity");
 								capacity= scanner.nextInt();
 								
+								object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
+								
+								object.addAppointment(appointmentID,appointmentType,capacity,ID);
+								
 							  break;
 							  
 						  case 5:
@@ -240,6 +251,10 @@ public class Client {
 	  
 							  System.out.print("Enter appointment type");
 								appointmentType= scanner.next();
+								
+								object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
+								
+								object.listAppointmentAvailability(appointmentType);
 								
 							  break;
 							  
@@ -257,6 +272,11 @@ public class Client {
 
 									  System.out.print("Enter new appointment type");
 										newAppointmentType= scanner.next();
+										
+										object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
+						
+										object.swapAppointment(ID,appointmentID,appointmentType,newAppointmentType,newAppointmentType);
+										
 										start=false;
 							  break;
 							  
@@ -273,6 +293,13 @@ public class Client {
 						  
 						  System.out.print("Enter appointment type");
 							appointmentType= scanner.next();
+							
+							object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
+							
+							object.removeAppointment(appointmentID,appointmentType,ID);
+							
+							
+							start=false;
 					
 					break;
 						  default:
