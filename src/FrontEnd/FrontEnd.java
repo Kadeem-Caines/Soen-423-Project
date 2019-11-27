@@ -46,27 +46,40 @@ public class FrontEnd extends frontEndOperationsPOA {
 	
 	
 
-	public void replicaListener() {
+
+	public String replicaListener(DatagramSocket Socket) throws SocketException {
 		
-		DatagramSocket aSocket = null;
+		
+		DatagramSocket aSocket =null;
+		String response=null;
+		
+		//socket times out if it doesn't receive anything
+		Socket.setSoTimeout(1000);
+		
 		try {
+			
 			aSocket = new DatagramSocket(this.UDPPortReplicaListener);
 			byte[] buffer = new byte[1000];
 			System.out.println("Front end is now listening for Replica");
 			while (true) {
 				DatagramPacket request = new DatagramPacket(buffer, buffer.length);
-				aSocket.receive(request);
-			
+				aSocket.receive(request);		
 				
+				response =new String(request.getData(), "UTF-8"); 		
 			}
-		} catch (SocketException e) {
+		}
+			
+		
+		catch (SocketException e) {
 			System.out.println("Socket: " + e.getMessage());
 		} catch (IOException e) {
 			System.out.println("IO: " + e.getMessage());
 		} finally {
 			if (aSocket != null)
-				aSocket.close();
-		}
+				aSocket.close();		
+			
+		}	
+		return response;
 		
 	}
 
@@ -82,14 +95,17 @@ public class FrontEnd extends frontEndOperationsPOA {
 			
 			// Prepare containers for the outgoing request and incoming reply.
 			byte[] requestByte = sequencerData.getBytes();
-			byte[] replyByte = new byte[requestByte.length];
+
 			
 			// Prepare a socket and a packet for the request.
 			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
 			
+			
 			// Send out the packet
 			socket.send(reqPacket);
 	
+			//have the front end listen for replica responses
+			response=replicaListener(socket);
 			
 			
 			
@@ -114,16 +130,16 @@ public class FrontEnd extends frontEndOperationsPOA {
 			
 			// Prepare containers for the outgoing request and incoming reply.
 			byte[] requestByte = sequencerData.getBytes();
-			byte[] replyByte = new byte[requestByte.length];
 			
 			// Prepare a socket and a packet for the request.
 			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
-			DatagramPacket replyPacket = new DatagramPacket(replyByte, replyByte.length);
 			
 			// Send out the packet
 			socket.send(reqPacket);
+	
+			//have the front end listen for replica responses
+			response=replicaListener(socket);
 			
-			response =new String(replyPacket.getData(), "UTF-8"); 
 			
 			
 			
@@ -150,16 +166,18 @@ public class FrontEnd extends frontEndOperationsPOA {
 			
 			// Prepare containers for the outgoing request and incoming reply.
 			byte[] requestByte = sequencerData.getBytes();
-			byte[] replyByte = new byte[requestByte.length];
+		
 			
 			// Prepare a socket and a packet for the request.
 			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
-			DatagramPacket replyPacket = new DatagramPacket(replyByte, replyByte.length);
 			
 			// Send out the packet
 			socket.send(reqPacket);
+	
+			//have the front end listen for replica responses
+			response=replicaListener(socket);
 			
-			response =new String(replyPacket.getData(), "UTF-8"); 
+			
 			
 			
 			
@@ -186,16 +204,17 @@ public class FrontEnd extends frontEndOperationsPOA {
 			
 			// Prepare containers for the outgoing request and incoming reply.
 			byte[] requestByte = sequencerData.getBytes();
-			byte[] replyByte = new byte[requestByte.length];
 			
 			// Prepare a socket and a packet for the request.
 			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
-			DatagramPacket replyPacket = new DatagramPacket(replyByte, replyByte.length);
-			
+	
 			// Send out the packet
 			socket.send(reqPacket);
+	
+			//have the front end listen for replica responses
+			response=replicaListener(socket);
 			
-			response =new String(replyPacket.getData(), "UTF-8"); 
+			
 			
 			
 			
@@ -223,16 +242,17 @@ public class FrontEnd extends frontEndOperationsPOA {
 			
 			// Prepare containers for the outgoing request and incoming reply.
 			byte[] requestByte = sequencerData.getBytes();
-			byte[] replyByte = new byte[requestByte.length];
 			
 			// Prepare a socket and a packet for the request.
 			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
-			DatagramPacket replyPacket = new DatagramPacket(replyByte, replyByte.length);
 			
 			// Send out the packet
 			socket.send(reqPacket);
+	
+			//have the front end listen for replica responses
+			response=replicaListener(socket);
 			
-			response =new String(replyPacket.getData(), "UTF-8"); 
+			
 			
 			
 			
@@ -259,16 +279,17 @@ public class FrontEnd extends frontEndOperationsPOA {
 			
 			// Prepare containers for the outgoing request and incoming reply.
 			byte[] requestByte = sequencerData.getBytes();
-			byte[] replyByte = new byte[requestByte.length];
+
 			
 			// Prepare a socket and a packet for the request.
 			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
-			DatagramPacket replyPacket = new DatagramPacket(replyByte, replyByte.length);
 			
 			// Send out the packet
 			socket.send(reqPacket);
+	
+			//have the front end listen for replica responses
+			response=replicaListener(socket);
 			
-			response =new String(replyPacket.getData(), "UTF-8"); 
 			
 			
 			
@@ -297,16 +318,17 @@ public class FrontEnd extends frontEndOperationsPOA {
 			
 			// Prepare containers for the outgoing request and incoming reply.
 			byte[] requestByte = sequencerData.getBytes();
-			byte[] replyByte = new byte[requestByte.length];
+
 			
 			// Prepare a socket and a packet for the request.
 			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
-			DatagramPacket replyPacket = new DatagramPacket(replyByte, replyByte.length);
 			
 			// Send out the packet
 			socket.send(reqPacket);
+	
+			//have the front end listen for replica responses
+			response=replicaListener(socket);
 			
-			response =new String(replyPacket.getData(), "UTF-8"); 
 			
 			
 			
@@ -327,13 +349,7 @@ public class FrontEnd extends frontEndOperationsPOA {
 	}
 	
 	
-	public static void main(String[] args) throws InvalidName {
-		
 
-		
-		
-
-}
 	
 }
 	
