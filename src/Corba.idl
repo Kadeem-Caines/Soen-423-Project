@@ -12,7 +12,7 @@ string addAppointment (in string appointmentID, in string appointmentType, in lo
 	
  string removeAppointment (in string appointmentID, in string appointmentType, in string adminID);
 	
-string listAppointmentAvailability (in string appointmentType);
+string listAppointmentAvailability (in string adminID, in string appointmentType);
  
  string swapAppointment (in string patientID, in string oldAppointmentID,in string oldAppointmentType,
 			in string newAppointmentID, in string newAppointmentType);

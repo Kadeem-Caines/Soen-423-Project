@@ -268,10 +268,10 @@ public class FrontEnd extends frontEndOperationsPOA {
 
 
 	@Override
-	public String listAppointmentAvailability(String appointmentType) throws IOException {
+	public String listAppointmentAvailability(String adminID,String appointmentType) throws IOException {
 		
 		DatagramSocket socket = null ;
-		String sequencerData="listAppointmentAvailability"+":"+appointmentType;
+		String sequencerData="listAppointmentAvailability"+":"+adminID+":"+appointmentType;
 		String response = null;
 		
 		try {

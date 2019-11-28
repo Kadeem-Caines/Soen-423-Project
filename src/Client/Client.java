@@ -254,7 +254,7 @@ public class Client {
 								
 								object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
 								
-								object.listAppointmentAvailability(appointmentType);
+								object.listAppointmentAvailability(ID,appointmentType);
 								
 							  break;
 							  
