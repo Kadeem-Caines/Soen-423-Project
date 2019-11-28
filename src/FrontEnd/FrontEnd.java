@@ -53,6 +53,7 @@ public class FrontEnd extends frontEndOperationsPOA {
 		DatagramSocket aSocket =null;
 		String response=null;
 		
+		
 		//socket times out if it doesn't receive anything
 		Socket.setSoTimeout(1000);
 		
@@ -63,9 +64,29 @@ public class FrontEnd extends frontEndOperationsPOA {
 			System.out.println("Front end is now listening for Replica");
 			while (true) {
 				DatagramPacket request = new DatagramPacket(buffer, buffer.length);
-				aSocket.receive(request);		
+				aSocket.receive(request);
+				
+			
 				
 				response =new String(request.getData(), "UTF-8"); 		
+				
+				//placeholders
+				if(response.contains("Replica1")) {
+					
+				}
+				
+				if(response.contains("Replica2")) {
+					
+				}
+	
+				if(response.contains("Replica3")) {
+		
+				}
+				
+				if(response.contains("Replica4")) {
+					
+				}
+				
 			}
 		}
 			
