@@ -39,6 +39,7 @@ public class FrontEnd extends frontEndOperationsPOA {
 	private static int UDPPortSequencer=1002;
 
 
+
 	
 	public FrontEnd() {
 		
@@ -103,6 +104,28 @@ public class FrontEnd extends frontEndOperationsPOA {
 		return response;
 		
 	}
+	
+	
+	//used if replica fails. notifies that replica
+	private void failureNotification(String replicaName, String city) {
+		DatagramSocket socket = null;
+		
+		try {
+			socket = new DatagramSocket();
+			
+			String data = "FAILURE:" + replicaName + ":" + city;
+			byte[] requestByte = data.getBytes();
+
+			DatagramPacket reqPacket = new DatagramPacket(requestByte, requestByte.length, sequencerAddress.getAddress(), this.UDPPortSequencer);
+			
+			socket.send(reqPacket);
+			
+		}catch(Exception e) {
+			System.out.println("Exception: " + e.getMessage());
+		}
+	}
+	
+	
 
 	@Override
 	public String bookAppointment(String patientID, String appointmentID, String appointmentType) throws IOException  {
