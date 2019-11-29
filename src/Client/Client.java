@@ -52,6 +52,7 @@ public class Client {
 		Random rand = new Random();
 		String ID = null;
 		String city = null;
+		String result;
 	
 		
 		
@@ -182,6 +183,7 @@ public class Client {
 							  
 						  case 1:
 							  
+							
 						
 							  System.out.print("Enter appointmentID");
 							appointmentID = scanner.next();
@@ -191,19 +193,23 @@ public class Client {
 							
 							object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
 							
-							object.bookAppointment(ID,appointmentID,appointmentType);
+							result=object.bookAppointment(ID,appointmentID,appointmentType);
 								 
-						
+							  System.out.print(result);
+							
 						    break;
 						    
 						  case 2:
+							  
 							  
 							  System.out.print("Enter appointmentID");
 								 appointmentID = scanner.next();
 							  
 									object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
 									
-									object.cancelAppointment(ID,appointmentID);
+									result=object.cancelAppointment(ID,appointmentID);
+									
+									  System.out.print(result);
 							
 						    break;
 						    
@@ -213,7 +219,9 @@ public class Client {
 							  
 								object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
 								
-								object.getAppointmentSchedule(ID);
+								result=object.getAppointmentSchedule(ID);
+								
+								  System.out.print(result);
 							  
 							  break;
 							  
@@ -237,7 +245,9 @@ public class Client {
 								
 								object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
 								
-								object.addAppointment(appointmentID,appointmentType,capacity,ID);
+								result=object.addAppointment(appointmentID,appointmentType,capacity,ID);
+								
+								  System.out.print(result);
 								
 							  break;
 							  
@@ -254,11 +264,15 @@ public class Client {
 								
 								object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
 								
-								object.listAppointmentAvailability(ID,appointmentType);
+								result=object.listAppointmentAvailability(ID,appointmentType);
+								
+								  System.out.print(result);
 								
 							  break;
 							  
 						  case 6:
+							  
+							 
 							  
 							  System.out.print("Enter appointment ID");
 							  appointmentID = scanner.next();
@@ -275,7 +289,9 @@ public class Client {
 										
 										object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
 						
-										object.swapAppointment(ID,appointmentID,appointmentType,newAppointmentType,newAppointmentType);
+									result=object.swapAppointment(ID,appointmentID,appointmentType,newAppointmentType,newAppointmentType);
+									
+									  System.out.print(result);
 										
 										start=false;
 							  break;
@@ -296,7 +312,9 @@ public class Client {
 							
 							object= frontEndOperationsHelper.narrow(ncRef.resolve_str(city));
 							
-							object.removeAppointment(appointmentID,appointmentType,ID);
+							result=object.removeAppointment(appointmentID,appointmentType,ID);
+							
+							  System.out.print(result);
 							
 							
 							start=false;
